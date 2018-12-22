@@ -1,5 +1,12 @@
-<ul>
-  <li *ngFor="let item of items | async">
-    <pre>{{ item | json }}</pre>
-  </li>
-</ul>
+<button mat-raised-button color="primary" (click)="addPeriod()">Add Period</button>
+
+
+  <mat-card *ngFor="let item of periods | async">
+    <mat-card-content>
+      <p>Start date: {{item.startDate | date: "dd-MM-yyyy"}}</p>
+      <p>End date: {{item.endDate | date: "dd-MM-yyyy"}}</p>
+      <p>Accumulation Percentage: {{item.accumulationPercentage}}</p>
+    </mat-card-content>
+  </mat-card>
+
+
