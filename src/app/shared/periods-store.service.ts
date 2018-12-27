@@ -23,4 +23,8 @@ export class PeriodsStoreService {
     }
     return this.db.collection<any>('periods').add(period);
   }
+
+  deletePeriod(period: Period): Promise<void> {
+    return this.db.doc(`periods/${period.id}`).delete();
+  }
 }

@@ -1,12 +1,22 @@
-<button mat-raised-button color="primary" (click)="addPeriod()">Add Period</button>
+<mat-toolbar color="primary">
+  <button mat-raised-button (click)="loginWithGoogle()" color="accent">Login with google <mat-icon>google</mat-icon></button>
+  <button mat-raised-button (click)="addPeriod()" color="accent">Add Period</button>
+</mat-toolbar>
 
-
-  <mat-card *ngFor="let item of periods | async">
-    <mat-card-content>
-      <p>Start date: {{item.startDate | date: "dd-MM-yyyy"}}</p>
-      <p>End date: {{item.endDate | date: "dd-MM-yyyy"}}</p>
-      <p>Accumulation Percentage: {{item.accumulationPercentage}}</p>
-    </mat-card-content>
-  </mat-card>
-
-
+<div  fxLayout='row wrap'>
+  <div  fxFlex="20%" *ngFor="let item of periods | async">
+    <mat-card>
+      <mat-card-title>
+        {{item.startDate | date: "dd-MM-yyyy"}} - {{item.endDate | date: "dd-MM-yyyy"}}
+      </mat-card-title>
+      <mat-card-content>
+        <p>Accumulation Percentage: {{item.accumulationPercentage}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary" (click)="deletePeriod(item)"><mat-icon>delete</mat-icon></button>
+        <button mat-icon-button color="primary" (click)="deletePeriod(item)"><mat-icon>edit</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>

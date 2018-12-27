@@ -5,7 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 @Component({
   selector: 'app-add-period-dialog',
   templateUrl: './add-period-dialog.component.html',
-  styleUrls: ['./add-period-dialog.component.css']
+  styleUrls: ['./add-period-dialog.component.scss']
 })
 export class AddPeriodDialogComponent implements OnInit {
 

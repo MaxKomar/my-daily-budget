@@ -1,26 +1,49 @@
-<mat-form-field>
-  <input matInput [matDatepicker]="startDate" placeholder="Start Date" [(ngModel)]="model.startDate">
-  <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-  <mat-datepicker #startDate></mat-datepicker>
-</mat-form-field>
+<div mat-dialog-title>Add new period</div>
+<div mat-dialog-content>
+  <form #periodForm="ngForm"  fxLayout='column'>
+    <div fxLayout='row' fxLayoutGap="8px">
+      <mat-form-field>
+        <input
+          matInput
+          required
+          [matDatepicker]="startDate"
+          placeholder="Start Date"
+          [(ngModel)]="model.startDate"
+          name="startDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          required
+          [matDatepicker]="endDate"
+          [min]="minDate"
+          placeholder="End Date"
+          [(ngModel)]="model.endDate"
+          name="endDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate ></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div  fxLayout='row' fxLayoutGap="8px">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Accumulation Percentage"
+          [type]="'number'"
+          [(ngModel)]="model.accumulationPercentage"
+          [autocomplete]="false"
+          name="accumulationPercentage"
+        >
+      </mat-form-field>
+    </div>
+  </form>
+</div>
 
-<mat-form-field>
-  <input matInput [matDatepicker]="endDate" [min]="minDate" placeholder="End Date" [(ngModel)]="model.endDate">
-  <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-  <mat-datepicker #endDate ></mat-datepicker>
-</mat-form-field>
-
-<mat-form-field>
-  <input
-    matInput
-    placeholder="Accumulation Percentage"
-    [type]="'number'"
-    [(ngModel)]="model.accumulationPercentage"
-    [autocomplete]="false"
-  >
-</mat-form-field>
-
-<div mat-dialog-actions>
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="model" cdkFocusInitial>Add</button>
+  <button mat-button [mat-dialog-close]="model" mat-flat-button color="primary" [disabled]="!periodForm.form.valid">Add</button>
 </div>
